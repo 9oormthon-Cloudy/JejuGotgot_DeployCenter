@@ -3,6 +3,7 @@ resources:
   - nginx.yaml
   - frontend.yaml
   - backend.yaml
+  - mysql.yaml
 configMapGenerator:
   - name: nginx
     files:
