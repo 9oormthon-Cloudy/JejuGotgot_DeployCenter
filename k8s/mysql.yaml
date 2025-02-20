@@ -23,7 +23,7 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: pass1234
             - name: MYSQL_DATABASE
-              value: mysql
+              value: db
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: data
