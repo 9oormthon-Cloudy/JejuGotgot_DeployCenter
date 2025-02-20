@@ -25,5 +25,5 @@ spec:
   selector:
     app: frontend
   ports:
-    - port: 
+    - port: 5173
       targetPort: 5173
