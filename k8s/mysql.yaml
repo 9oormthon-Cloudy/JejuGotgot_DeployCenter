@@ -15,25 +15,31 @@ spec:
     spec:
       containers:
         - name: mysql
-          # 여러분의 mysql image 주소를 입력해주세요.
+          # Your MySQL image address
           image: krmp-d2hub-idock.9rum.cc/dev-test/repo_c9ed03cb3fcb
           env:
             - name: TZ
               value: Asia/Seoul
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              value: pass1234
             - name: MYSQL_DATABASE
-              value: krampoline
+              value: mysql
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: data
               subPath: mysql
+            - mountPath: /docker-entrypoint-initdb.d
+              name: init-db
           resources:
             limits:
               memory: 1Gi
           readinessProbe:
             tcpSocket:
               port: 3306
+      volumes:
+        - name: init-db
+          configMap:
+            name: init-db
   volumeClaimTemplates:
     - metadata:
         name: data
